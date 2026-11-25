@@ -1,0 +1,67 @@
+cabal-version: 3.0
+name: aoc26
+version: 0
+build-type: Simple
+author: saygo-png
+maintainer: saygo-png <saygo.mail@proton.me>
+
+common common-options
+  build-depends: relude
+  default-language: GHC2024
+  ghc-options:
+    -Weverything
+    -Wno-all-missed-specialisations
+    -Wno-missed-specialisations
+    -Wno-missing-exported-signatures
+    -Wno-missing-import-lists
+    -Wno-missing-kind-signatures
+    -Wno-missing-local-signatures
+    -Wno-missing-safe-haskell-mode
+    -Wno-safe
+    -Wno-unsafe
+    -Wno-unticked-promoted-constructors
+
+  default-extensions:
+    DuplicateRecordFields
+    MultiWayIf
+    NoFieldSelectors
+    NoImplicitPrelude
+    OverloadedRecordDot
+    OverloadedStrings
+    PartialTypeSignatures
+
+common executable-options
+  ghc-options:
+    -threaded
+    -rtsopts
+
+library
+  import: common-options
+  hs-source-dirs: src
+  -- cabal-gild: discover src
+  exposed-modules:
+    AoC
+    Day01
+    Day02
+    Day03
+    Day04
+    Day05
+    Day06
+    Day07
+    Day08
+    Day09
+    Day10
+    Day11
+    Day12
+
+  build-depends:
+    base,
+    directory,
+
+executable aoc26
+  import: common-options, executable-options
+  hs-source-dirs: app
+  main-is: Main.hs
+  -- cabal-gild: discover app --exclude=app/Main.hs
+  other-modules:
+  build-depends: aoc26
